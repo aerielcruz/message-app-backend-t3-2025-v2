@@ -15,7 +15,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Test
-      run: python manage,py migrate
+      run: python manage.py migrate
 
   build:
 
