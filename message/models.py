@@ -6,6 +6,9 @@ class Chat_room(models.Model):
     name = models.CharField(max_length=100)
     users = models.ManyToManyField(User, related_name="chat_rooms")
 
+    def __str__(self):
+        return self.name
+
 class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE)
     receiver = models.ManyToManyField(User, related_name="message_receivers", null=True, blank=True)

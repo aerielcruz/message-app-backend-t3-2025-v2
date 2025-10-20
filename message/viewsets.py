@@ -11,10 +11,7 @@ class Chat_roomViewSet(viewsets.ModelViewSet):
     serializer_class = Chat_roomSerializer
 
     def get_queryset(self):
-        # my_send_message = Message.objects.filter(sender=self.request.user)
-        # my_receive_message = Message.objects.filter(receiver=self.request.user)
-        # chatrooms = Chat_room.objects.filter(messages__in=my_send_message | my_receive_message)
-        chatrooms = Chat_room.objects.filter(self.request.user)
+        chatrooms = Chat_room.objects.filter(users=self.request.user)
         return chatrooms
 
 class MessageViewSet(viewsets.ModelViewSet):
